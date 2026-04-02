@@ -1,0 +1,30 @@
+works:
+- Cloudinary Image Uploader 
+github: https://github.com/IamMDAkbar/Cloudinary_Image_Uploader
+website: https://cloudinary-image-uploader.vercel.app
+img: Portfolio\res\img\work1.png
+
+- Linux Firewall UI
+github: https://github.com/IamMDAkbar/Linux-Firewall-UI
+source: https://github.com/IamMDAkbar/Linux-Firewall-UI/releases/tag/beta
+img: Portfolio\res\img\work2.png
+
+- Banking System Using Java
+github: https://github.com/IamMDAkbar/Banking_System_in_Java
+source: https://github.com/IamMDAkbar/Banking_System_in_Java/releases/tag/v1.0.0
+img: Portfolio\res\img\work3.png
+
+- WAP Smart City Management System
+github: https://github.com/IamMDAkbar/WAP_Smart_City
+source: https://github.com/IamMDAkbar/WAP_Smart_City/releases/tag/v1.0.0
+img: Portfolio\res\img\work4.png
+
+- MakeYaBill
+github: https://github.com/IamMDAkbar/MakeYaBill
+website: https://make-ya-bill.vercel.app
+img: Portfolio\res\img\work5.png
+
+- Cloud Project Hub
+github: https://github.com/IamMDAkbar/CloudProjectHub
+website: https://cloud-project-hub.vercel.app
+img: Portfolio\res\img\work6.png
