@@ -18,6 +18,9 @@ let cubeGroup = new THREE.Group();
 
 // On page load
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cursor tail effect
+    initCursorTail();
+    
     // Initialize particles.js
     if (typeof particlesJS !== 'undefined') {
         particlesJS('particles-js', {
@@ -530,12 +533,12 @@ function initPortfolioFilters() {
 function validateForm() {
     const inputs = document.querySelectorAll('.contact-form input, .contact-form textarea');
     let isValid = true;
-    
+        
     inputs.forEach(input => {
         if (!input.value) {
             isValid = false;
             input.style.boxShadow = '0 0 0 2px red';
-            
+                
             input.addEventListener('input', function() {
                 this.style.boxShadow = '';
             });
@@ -547,5 +550,69 @@ function validateForm() {
     if (isValid) {
         alert('Form submitted successfully!');
         document.querySelector('.contact-form').reset();
+    }
+}
+
+// Neon Cursor Tail Effect
+function initCursorTail() {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor-tail';
+    document.body.appendChild(cursor);
+    
+    const trails = [];
+    const maxTrails = 15;
+    let trailIndex = 0;
+    
+    // Create trail elements
+    for (let i = 0; i < maxTrails; i++) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        document.body.appendChild(trail);
+        trails.push(trail);
+    }
+    
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+    let lastX = 0, lastY = 0;
+    
+    // Update cursor position
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Create new trail point
+        const currentTrail = trails[trailIndex];
+        currentTrail.style.left = mouseX + 'px';
+        currentTrail.style.top = mouseY + 'px';
+        currentTrail.classList.add('active');
+        
+        // Remove active class from previous trail with delay
+        setTimeout(() => {
+            currentTrail.classList.remove('active');
+        }, 100);
+        
+        // Move to next trail
+        trailIndex = (trailIndex + 1) % maxTrails;
+    });
+    
+    // Animate main cursor
+    function animateCursor() {
+        // Smooth cursor movement
+        currentX += (mouseX - currentX) * 0.15;
+        currentY += (mouseY - currentY) * 0.15;
+        
+        // Update main cursor
+        cursor.style.left = currentX + 'px';
+        cursor.style.top = currentY + 'px';
+        
+        requestAnimationFrame(animateCursor);
+    }
+    
+    animateCursor();
+    
+    // Hide cursor on mobile
+    if (window.innerWidth <= 768) {
+        cursor.style.display = 'none';
+        trails.forEach(trail => trail.style.display = 'none');
     }
 }
